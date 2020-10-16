@@ -27,7 +27,7 @@ RUN echo " host: localhost" >> config/database.yml
 RUN echo " username: redmine" >> config/database.yml
 RUN echo " password: $tr0ngP@$$123" >> config/database.yml
 
-RUNgem install bundler
+RUN gem install bundler
 
 RUN bundle config set without 'development test rmagick'
 
