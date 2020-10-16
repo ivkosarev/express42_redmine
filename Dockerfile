@@ -1,12 +1,16 @@
 FROM ubuntu
 
 RUN apt-get update
+RUN apt-get install software-properties-common
+RUN apt-add-repository universe
+RUN apt-get update
+RUN apt-get install python-pip
 
 RUN apt-get install postgresql-12 postgresql-contrib \
 postgresql-server-dev-12 imagemagick ruby build-essential \
 patch ruby-dev zlib1g-dev liblzma-dev libmagick++-dev \
 passenger libcurl4-openssl-dev libssl-dev \
-python-pip python-dev subversion -y
+python-pip python-dev  subversion -y
 
 RUN cd ~
 
