@@ -2,7 +2,8 @@ FROM ubuntu
 
 RUN apt-get update
 RUN export DEBIAN_FRONTEND=noninteractive # подавляем запрос на инпут временной зоны при установке tzdata, которая нужна для постгри
-RUN apt-get install -y tzdata gnupg postgresql postgresql-contrib python3-pip python-dev subversion sudo 
+RUN apt-get install -y tzdata gnupg 
+RUN apt-get install -y postgresql postgresql-contrib python3-pip python-dev subversion sudo 
 RUN mkdir opt/redmine
 WORKDIR opt/redmine
 RUN groupadd postgresusers
