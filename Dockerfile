@@ -1,11 +1,5 @@
 FROM ubuntu
 
-RUN apt-get update
-RUN apt-get install curl -y
-RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-RUN apt-get update
-RUN python get-pip.py
-
 RUN apt-get install postgresql-12 postgresql-contrib \
 postgresql-server-dev-12 imagemagick ruby build-essential \
 patch ruby-dev zlib1g-dev liblzma-dev libmagick++-dev \
