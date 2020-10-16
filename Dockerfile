@@ -18,9 +18,9 @@ RUN svn co https://svn.redmine.org/redmine/branches/4.1-stable redmine-4.1
 
 RUN ln -s redmine-* redmine
 
-RUN postgres psql -c "CREATE ROLE redmine LOGIN ENCRYPTED PASSWORD '$tr0ngP@$$123' NOINHERIT VALID UNTIL 'infinity'"
+RUN psql -c "CREATE ROLE redmine LOGIN ENCRYPTED PASSWORD '$tr0ngP@$$123' NOINHERIT VALID UNTIL 'infinity'"
 
-RUN postgres psql -c "CREATE DATABASE redmine WITH ENCODING='UTF8' OWNER=redmine"
+RUN psql -c "CREATE DATABASE redmine WITH ENCODING='UTF8' OWNER=redmine"
 
 RUN cd ~/redmine
 
