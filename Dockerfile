@@ -1,7 +1,7 @@
 FROM ubuntu
 
 RUN apt-get update
-RUN apt-get install software-properties-common
+RUN apt-get install software-properties-common -y
 RUN apt-add-repository universe
 RUN apt-get update
 RUN apt-get install python-pip -y
