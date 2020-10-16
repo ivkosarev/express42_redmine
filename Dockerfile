@@ -1,26 +1,26 @@
 FROM ubuntu
 
 RUN apt-get update
-RUN sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
-RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
-RUN apt-get install wget gnupg -y
-RUN wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | apt-key add -
+RUN export DEBIAN_FRONTEND=noninteractive # подавляем запрос на инпут временной зоны при установке tzdata, которая нужна для постгри
+RUN apt-get install -y tzdata gnupg sudo 
 
-RUN apt-get install postgresql-12 postgresql-contrib \
-postgresql-server-dev-12 imagemagick ruby build-essential \
-patch ruby-dev zlib1g-dev liblzma-dev libmagick++-dev \
-passenger libcurl4-openssl-dev libssl-dev \
-python3-pip python-dev  subversion -y
+RUN apt-get install postgresql postgresql-contrib python3-pip python-dev subversion -y
 
-RUN cd ~
+
+RUN sudo -i -u postgres
+
+
+RUN mkdir opt/redmine
+
+WORKDIR opt/redmine
 
 RUN svn co https://svn.redmine.org/redmine/branches/4.1-stable redmine-4.1
 
 RUN ln -s redmine-* redmine
 
-RUN psql -c "CREATE ROLE redmine LOGIN ENCRYPTED PASSWORD '$tr0ngP@$$123' NOINHERIT VALID UNTIL 'infinity'"
+RUN sudo -u postgres  psql -c "CREATE ROLE redmine LOGIN ENCRYPTED PASSWORD '$tr0ngP@$$123' NOINHERIT VALID UNTIL 'infinity'"
 
-RUN psql -c "CREATE DATABASE redmine WITH ENCODING='UTF8' OWNER=redmine"
+RUN sudo -u postgres  psql -c "CREATE DATABASE redmine WITH ENCODING='UTF8' OWNER=redmine"
 
 RUN cd ~/redmine
 
