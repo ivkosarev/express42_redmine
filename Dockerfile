@@ -2,7 +2,7 @@ FROM ubuntu
 
 RUN apt-get update
 
-RUN apt install postgresql-12 postgresql-contrib \
+RUN apt-get install postgresql-12 postgresql-contrib \
 postgresql-server-dev-12 imagemagick ruby build-essential \
 patch ruby-dev zlib1g-dev liblzma-dev libmagick++-dev \
 passenger libcurl4-openssl-dev libssl-dev \
