@@ -2,17 +2,13 @@ FROM ubuntu
 
 RUN apt-get update
 RUN export DEBIAN_FRONTEND=noninteractive # подавляем запрос на инпут временной зоны при установке tzdata, которая нужна для постгри
-RUN apt-get install -y tzdata gnupg sudo 
-
-RUN apt-get install postgresql postgresql-contrib python3-pip python-dev subversion -y
-
-
-RUN sudo -i -u postgres
-
-
+RUN apt-get install -y tzdata gnupg postgresql postgresql-contrib python3-pip python-dev subversion sudo 
 RUN mkdir opt/redmine
-
 WORKDIR opt/redmine
+RUN groupadd postgresusers
+RUN usermod -aG postgresusers,sudo postgres
+RUN chgrp postgresusers /opt/redmine
+
 
 RUN svn co https://svn.redmine.org/redmine/branches/4.1-stable redmine-4.1
 
@@ -22,7 +18,6 @@ RUN sudo -u postgres  psql -c "CREATE ROLE redmine LOGIN ENCRYPTED PASSWORD '$tr
 
 RUN sudo -u postgres  psql -c "CREATE DATABASE redmine WITH ENCODING='UTF8' OWNER=redmine"
 
-RUN cd ~/redmine
 
 RUN echo "production:" > config/database.yml
 RUN echo " adapter: postgresql" >> config/database.yml
