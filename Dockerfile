@@ -1,10 +1,10 @@
 FROM ubuntu
 
 RUN apt-get update
-RUN apt-get install software-properties-common -y
-RUN apt-add-repository universe
+RUN apt-get install curl -y
+RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 RUN apt-get update
-RUN apt-get install python-pip -y
+RUN python get-pip.py
 
 RUN apt-get install postgresql-12 postgresql-contrib \
 postgresql-server-dev-12 imagemagick ruby build-essential \
