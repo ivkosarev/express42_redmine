@@ -2,7 +2,8 @@ FROM ubuntu
 
 RUN apt-get update
 RUN export DEBIAN_FRONTEND=noninteractive # подавляем запрос на инпут временной зоны при установке tzdata, которая нужна для постгри
-RUN apt-get install -y tzdata gnupg postgresql postgresql-contrib python3-pip python-dev subversion sudo curl \
+RUN apt-get install -y tzdata gnupg 
+RUN apt-get install -y postgresql postgresql-contrib python3-pip python-dev subversion sudo curl \
 imagemagick build-essential patch  \
 zlib1g-dev liblzma-dev libmagick++-dev passenger libcurl4-openssl-dev libssl-dev libpq-dev
 WORKDIR /opt
