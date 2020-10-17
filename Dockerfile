@@ -16,7 +16,7 @@ RUN sudo -u postgres psql -c "CREATE ROLE redmine LOGIN ENCRYPTED PASSWORD 'supe
 RUN sudo -u postgres psql -c "CREATE DATABASE redmine WITH ENCODING='UTF8' OWNER=redmine"
 RUN exit 
 RUN cd /opt/redmine-4.1
-RUN echo "production:" > config/database.yml                          rvm + bundler hook
+RUN echo "production:" > config/database.yml
 RUN echo " adapter: postgresql" >> config/database.yml
 RUN echo " database: redmine" >> config/database.yml
 RUN echo " host: localhost" >> config/database.yml
@@ -27,7 +27,7 @@ RUN curl -sSL https://get.rvm.io | bash -s stable --ruby
 RUN source /usr/local/rvm/scripts/rvm
 RUN rvm install 2.6.5
 RUN rvm use 2.6.5
-RUN gem install bundler ему нада руби 2.3.0 или далее, сука!
+RUN gem install bundler
 RUN bundle config set without 'development test rmagick'
 RUN bundle install
 RUN bundle exec rake generate_secret_token
