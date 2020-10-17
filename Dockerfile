@@ -6,7 +6,7 @@ RUN apt-get install -y tzdata gnupg
 RUN apt-get install -y postgresql postgresql-contrib python3-pip python-dev subversion sudo curl \
 imagemagick build-essential patch  \
 zlib1g-dev liblzma-dev libmagick++-dev passenger libcurl4-openssl-dev libssl-dev libpq-dev
-WORKDIR /opt
+RUN cd /opt
 RUN svn co https://svn.redmine.org/redmine/branches/4.1-stable redmine-4.1
 RUN ln -s redmine-* redmine
 RUN pg_ctlcluster 12 main start
