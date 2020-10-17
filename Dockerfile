@@ -10,8 +10,7 @@ RUN cd /opt
 RUN svn co https://svn.redmine.org/redmine/branches/4.1-stable redmine-4.1
 RUN ln -s redmine-* redmine
 RUN pg_ctlcluster 12 main start
-RUN groupadd postgresusers && usermod -aG postgresusers,sudo postgres
-RUN chgrp postgresusers /opt/redmine
+RUN groupadd postgresusers && usermod -aG postgresusers,sudo postgres && chgrp postgresusers /opt/*
 RUN sudo -u postgres psql -c "CREATE ROLE redmine LOGIN ENCRYPTED PASSWORD 'super_strong_passwd_123' NOINHERIT VALID UNTIL 'infinity'"
 RUN sudo -u postgres psql -c "CREATE DATABASE redmine WITH ENCODING='UTF8' OWNER=redmine"
 RUN cd /opt/redmine-4.1
