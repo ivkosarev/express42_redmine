@@ -1,6 +1,5 @@
 FROM ubuntu
 
-# заинсталлим все в докерфайле чтобы все зависимости кешировались
 RUN apt-get update
 ENV DEBIAN_FRONTEND=noninteractive # подавляем запрос на ввод временной зоны
 RUN apt-get install -y tzdata gnupg postgresql postgresql-contrib python3-pip python-dev subversion sudo curl \
