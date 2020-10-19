@@ -8,7 +8,7 @@ zlib1g-dev liblzma-dev libmagick++-dev passenger libcurl4-openssl-dev libssl-dev
 RUN cd /opt && svn co https://svn.redmine.org/redmine/branches/4.1-stable redmine-4.1
 RUN ln -s redmine-* redmine
 COPY ./start.sh /opt/redmine-4.1
-RUN chmod a+x ./start.sh
+RUN chmod a+x /opt/redmine-4.1/start.sh
 ENTRYPOINT ["bash"]
 RUN bash ./start.sh
 EXPOSE 3000/tcp 
