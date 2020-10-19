@@ -1,10 +1,10 @@
 #!/bin/bash
-apt-get update
-export DEBIAN_FRONTEND=noninteractive # подавляем запрос на инпут
-apt-get install -y tzdata gnupg
-apt-get install -y postgresql postgresql-contrib python3-pip python-dev subversion sudo curl \
-imagemagick build-essential patch  \
-zlib1g-dev liblzma-dev libmagick++-dev passenger libcurl4-openssl-dev libssl-dev libpq-dev
+#apt-get update
+#export DEBIAN_FRONTEND=noninteractive # подавляем запрос на инпут
+#apt-get install -y tzdata gnupg
+#apt-get install -y postgresql postgresql-contrib python3-pip python-dev subversion sudo curl \
+#imagemagick build-essential patch  \
+#zlib1g-dev liblzma-dev libmagick++-dev passenger libcurl4-openssl-dev libssl-dev libpq-dev
 cd /opt
 svn co https://svn.redmine.org/redmine/branches/4.1-stable redmine-4.1
 ln -s redmine-* redmine
