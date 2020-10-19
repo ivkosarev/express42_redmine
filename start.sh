@@ -10,6 +10,7 @@ svn co https://svn.redmine.org/redmine/branches/4.1-stable redmine-4.1
 ln -s redmine-* redmine
 pg_ctlcluster 12 main start
 groupadd postgresusers && usermod -aG postgresusers,sudo postgres && chgrp postgresusers /opt/
+pg_ctl reload
 sudo -u postgres psql -h localhost -c "CREATE ROLE redmine LOGIN ENCRYPTED PASSWORD 'super_strong_passwd_123' NOINHERIT VALID UNTIL 'infinity'"
 sudo -u postgres psql -h localhost -c "CREATE DATABASE redmine WITH ENCODING='UTF8' OWNER=redmine"
 cd /opt/redmine-4.1
@@ -24,7 +25,7 @@ curl -sSL https://get.rvm.io | bash -s stable --ruby
 source /usr/local/rvm/scripts/rvm
 rvm install 2.6.5
 rvm use 2.6.5
-gem install bundler
+gem install bundler 
 bundle config set without 'development test rmagick'
 bundle install
 bundle exec rake generate_secret_token
