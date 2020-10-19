@@ -1,3 +1,4 @@
+#!/bin/bash
 apt-get update
 export DEBIAN_FRONTEND=noninteractive # подавляем запрос на инпут
 apt-get install -y tzdata gnupg
