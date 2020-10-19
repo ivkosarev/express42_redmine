@@ -10,5 +10,5 @@ RUN ln -s redmine-* redmine
 COPY ./start.sh /opt/redmine-4.1
 RUN chmod a+x /opt/redmine-4.1/start.sh
 ENTRYPOINT ["bash"]
-RUN bash ./start.sh
+RUN bash /opt/redmine-4.1/start.sh
 EXPOSE 3000/tcp 
