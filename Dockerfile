@@ -7,8 +7,15 @@ imagemagick build-essential patch  \
 zlib1g-dev liblzma-dev libmagick++-dev passenger libcurl4-openssl-dev libssl-dev libpq-dev
 RUN cd /opt && svn co https://svn.redmine.org/redmine/branches/4.1-stable redmine-4.1
 RUN ln -s redmine-* redmine
-COPY ./start.sh /opt/redmine-4.1
-RUN chmod a+x /opt/redmine-4.1/start.sh
-ENTRYPOINT ["bash"]
-RUN bash /opt/redmine-4.1/start.sh
+COPY ./database.yml /opt/redmine-4.1/config/
+
+COPY ./run_postgres.sh /usr/local/bin/
+RUN chmod a+x /usr/local/bin/run_postgres.sh
+RUN bash /usr/local/bin/run_postgres.sh
+
+COPY ./install_rvm_ruby_bundler.sh /usr/local/bin/
+RUN chmod a+x /usr/local/bin/install_rvm_ruby_bundler.sh
+RUN bash /usr/local/bin/install_rvm_ruby_bundler.sh
 EXPOSE 3000/tcp 
+CMD ruby bin/rails server -b 0.0.0.0 -e production
+
