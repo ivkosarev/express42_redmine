@@ -12,16 +12,11 @@ RUN cd /opt && svn co https://svn.redmine.org/redmine/branches/4.1-stable redmin
 RUN ln -s redmine-* redmine
 COPY ./database.yml /opt/redmine-4.1/config/
 
-COPY ./run_postgres.sh /usr/local/bin/
-RUN chmod a+x /usr/local/bin/run_postgres.sh && bash /usr/local/bin/run_postgres.sh
 
-COPY ./install_rvm.sh /usr/local/bin/
-RUN chmod a+x /usr/local/bin/install_rvm.sh && bash /usr/local/bin/install_rvm.sh
-
-
-
+COPY ./ruby.sh /usr/local/bin/
+RUN chmod a+x /usr/local/bin/ruby.sh && bash /usr/local/bin/ruby.sh
 
 EXPOSE 3000/tcp
- 
-CMD ruby bin/rails server -b 0.0.0.0 -e production
+COPY ./init.sh /usr/local/bin/
+CMD chmod a+x /usr/local/bin/init.sh && bash /usr/local/bin/init.sh
 
