@@ -7,6 +7,7 @@ rvm use 2.6.5
 gem install bundler 
 bundle config set without 'development test rmagick'
 cd /opt/redmine-4.1 && bundle install
+pg_ctlcluster 12 main start
 bundle exec rake generate_secret_token
 RAILS_ENV=production bundle exec rake db:migrate
 RAILS_ENV=production REDMINE_LANG=ru bundle exec rake redmine:load_default_data
