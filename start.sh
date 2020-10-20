@@ -8,10 +8,12 @@
 #cd /opt
 #svn co https://svn.redmine.org/redmine/branches/4.1-stable redmine-4.1
 #ln -s redmine-* redmine
+v это можно сунуть в конец!-------
 #pg_ctlcluster 12 main start
 #groupadd postgresusers && usermod -aG postgresusers,sudo postgres && chgrp postgresusers /opt/
 #sudo -u postgres psql -c "CREATE ROLE redmine LOGIN ENCRYPTED PASSWORD 'super_strong_passwd_123' NOINHERIT VALID UNTIL 'infinity'"
 #sudo -u postgres psql -c "CREATE DATABASE redmine WITH ENCODING='UTF8' OWNER=redmine"
+-----------------------------------
 #cd /opt/redmine-4.1
 #echo "production:" > config/database.yml
 #echo " adapter: postgresql" >> config/database.yml
@@ -23,10 +25,12 @@
 #curl -sSL https://get.rvm.io | bash -s stable --ruby
 #source /usr/local/rvm/scripts/rvm
 #rvm install 2.6.5
-#rvm use 2.6.5
+#rvm use 2.6.5                           
+/opt/redmine-4.1/Gemfile
+
 #gem install bundler 
 #bundle config set without 'development test rmagick'
-#bundle install
+#cd /opt/redmine-4.1 && bundle install
 #bundle exec rake generate_secret_token
 #RAILS_ENV=production bundle exec rake db:migrate
 #RAILS_ENV=production REDMINE_LANG=ru bundle exec rake redmine:load_default_data
