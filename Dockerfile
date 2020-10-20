@@ -17,6 +17,6 @@ COPY ./ruby.sh /usr/local/bin/
 RUN chmod a+x /usr/local/bin/ruby.sh && bash /usr/local/bin/ruby.sh
 
 EXPOSE 3000/tcp
-COPY ./init1.sh /usr/local/bin/
-CMD chmod a+x /usr/local/bin/init1.sh && bash /usr/local/bin/init1.sh
+COPY ./init.sh /usr/local/bin/
+CMD chmod a+x /usr/local/bin/init.sh && bash /usr/local/bin/init.sh
 
