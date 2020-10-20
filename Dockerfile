@@ -21,7 +21,7 @@ RUN chmod a+x /usr/local/bin/install_rvm.sh && bash /usr/local/bin/install_rvm.s
 COPY ./install_bundler_rake.sh /usr/local/bin/
 RUN chmod a+x /usr/local/bin/install_bundler_rake.sh
 
-RUN rake rails:update:bin
+RUN rake rails:update:bin --trace
 
 EXPOSE 3000/tcp
  
