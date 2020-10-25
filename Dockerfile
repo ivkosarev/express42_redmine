@@ -4,7 +4,7 @@ RUN apt-get update
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get install -y tzdata gnupg postgresql postgresql-contrib python3-pip python-dev subversion sudo curl \
+RUN apt-get install -y tzdata gnupg postgresql python3-pip python-dev subversion sudo curl \
 imagemagick build-essential patch  \
 zlib1g-dev liblzma-dev libmagick++-dev passenger libcurl4-openssl-dev libssl-dev libpq-dev
 

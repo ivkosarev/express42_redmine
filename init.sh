@@ -5,7 +5,7 @@ sudo -u postgres psql -c "CREATE ROLE redmine LOGIN ENCRYPTED PASSWORD 'super_st
 sudo -u postgres psql -c "CREATE DATABASE redmine WITH ENCODING='UTF8' OWNER=redmine"
 cd /opt/redmine-4.1 && bundle install
 source /usr/local/rvm/scripts/rvm
-rvm use 2.6.5
+rvm use system
 bundle exec rake generate_secret_token
 RAILS_ENV=production bundle exec rake db:migrate
 RAILS_ENV=production REDMINE_LANG=ru bundle exec rake redmine:load_default_data
