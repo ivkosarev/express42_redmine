@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-docker build -t  redmine_all_in_one ./redmine
+docker build -t  redmine_all_in_one .
 docker tag redmine_all_in_one ivkosarev/redmine_all_in_one:latest
 
 echo $my_passwd_docker | docker login --username ivkosarev --password-stdin
