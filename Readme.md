@@ -4,7 +4,7 @@
 ***
 To launch Redmine from this repository, just follow a few simple steps:
 
-1. Clone the repository and go to its directory
+1. Clone the repository
 2. Build an image (docker build)
 3. Wait for the image to be built
 4. Start the container with opening ports.
