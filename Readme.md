@@ -1,14 +1,10 @@
-В данном репозитории лежит набор инструкций для создания Docker контейнера с Redmine.
-Написан он сумбурно и во многом неправильно, но факт есть факт, оно работает ¯\_(ツ)_/¯
+### This repository contains instructions for building Redmine from scratch, installing ruby 2.6.5, and Postgres 12. Everything is installed in 1 container, although this is an extremely incorrect use of Docker, but this was the original task.
 
-Для его работы используется:
-1. PostgreeSQL
-2. Ruby 2.6.5
-3. Bundler
+
 ***
-Чтобы запустить Redmine изданного репозитория достаточно выполнить несколько простых дествий:
+To launch Redmine from this repository, just follow a few simple steps:
 
-1. Сконировать репозиторий и перейти в его каталог
-2. Собрать образ (docker build)
-3. Дождаться сборки образа
-4. Запустить контейнер с открытием портов.
+1. Clone the repository and go to its directory
+2. Build an image (docker build)
+3. Wait for the image to be built
+4. Start the container with opening ports.
