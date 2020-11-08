@@ -12,6 +12,7 @@ RUN cd /opt && svn co https://svn.redmine.org/redmine/branches/4.1-stable redmin
 RUN ln -s redmine-* redmine
 COPY ./database.yml /opt/redmine-4.1/config/
 
+WORKDIR /opt/redmine-4.1
 
 COPY ./ruby.sh /usr/local/bin/
 RUN chmod a+x /usr/local/bin/ruby.sh && bash /usr/local/bin/ruby.sh
